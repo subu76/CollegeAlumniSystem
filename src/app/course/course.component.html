@@ -1,0 +1,37 @@
+
+<h4>List of Courses</h4>
+<br> <br>
+
+<div class="row">
+  <button (click)="addCourse()" class="btn btn-primary"> Add New Course</button> 
+</div>
+<br>
+<div class="alert alert-success" *ngIf='returnMessage'>
+  {{returnMessage}}
+</div>
+
+
+<table class="table">    
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Course ID</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Duration</th>        
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor ="let course of courses">
+        <th scope="row">
+          <a routerLink="" (click)="updateCourse(course.courseId)">
+            {{course.courseId}}</a>
+        </th>
+        <td>{{course.courseName}}</td>
+        <td>{{course.duration}}</td> 
+        <td><button (click)="updateCourse(course.courseId)" class="btn btn-success"> Update </button></td>        
+        <td><button (click)="deleteCourse(course.courseId)" class="btn btn-warning"> Delete </button></td>        
+      </tr>  
+    </tbody>
+  </table>
+

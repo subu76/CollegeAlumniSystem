@@ -1,0 +1,28 @@
+<H1> Manage Course </H1>
+
+<div class="container">
+    <div class="alert alert-danger" *ngIf="courseForm.dirty && courseForm.invalid">        
+          Enter valid values        
+    </div>
+    <form (ngSubmit)="!courseForm.invalid && saveCourse()" #courseForm="ngForm">
+    <fieldset class="form-group">
+        <label>Course Name: </label>
+    <input type="text" [(ngModel)]="course.courseName" class="form-control" name="courseName" required="required" size="30" minlength="4" maxlength="30">
+    <label>Duration: </label>
+
+
+    <select class="form-control" name="duration" [(ngModel)]="course.duration" #dur="ngModel">
+        <option value="0">-- Select Course Duration --</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="courseForm.dirty && dur.value == '0' ">        
+        Please select a course duration        
+    </div>
+
+    </fieldset>
+
+    <button type="submit" class="btn btn-success" > Save </button>
+</form>
+</div>
